@@ -1,0 +1,70 @@
+// img.icon{
+//   height: 20px;
+//   width: 17px;
+//   margin: 0 12px
+// }
+
+.homeBack{
+  float: left;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+// ion-content{
+//   --color: black;
+//   --background: url('../../assets/images/Brown-Background.png') no-repeat center center fixed
+// }
+
+
+ion-card{
+  border: 1px solid blue;
+  -webkit-box-shadow: 0 2px 3px -3px blue;
+  -moz-box-shadow: 0 2px 3px -4px blue;
+  box-shadow: 0 2px 3px -4px blue;
+  }
+  .post_img {
+    width: 100%;
+    height: 240px !important;
+    padding:0 20px;
+    overflow: hidden;
+    margin: auto;
+  }
+  .post_img img{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+  }
+  .share-button{
+    width:40px;
+    height:40px;
+    background-color: #c21c00;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 1px;
+    right:10px;
+    z-index: 1;
+  }
+ img.icon {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: -3px;
+ }
+ img.bookmark{
+   height: 30px;
+   width: 20px;
+   margin-left: 10px;
+ }
+.background{
+  background-image: url("../../assets/images/Brown-Background.png")!important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 12px !important;
+}
+.news-title{
+  margin: auto;
+  font-size: 35px;
+  color:black;
+  text-align: center
+}

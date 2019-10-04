@@ -1,0 +1,16 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-icon name="arrow-round-back" class="privacyBack" routerLink="/settings"></ion-icon>
+		
+		<ion-title class="ion-text-center">
+			Privacy Policy
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content padding>
+
+	<div *ngFor="let policy of privacyPolicy">
+		<div [innerHTML]="policy.policy"></div>	
+	</div>
+	<div class="loader" *ngIf="loading">Loading...</div>
+</ion-content>

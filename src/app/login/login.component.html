@@ -1,0 +1,94 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-icon name="arrow-round-back" class="loginBack" routerLink="/settings"></ion-icon>
+		<ion-title>
+			Login
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+	<div class="componentMainDiv">
+		<div class="header">
+			<h1 id="welcomeHead"><i>Welcome to</i></h1>
+			<img src="assets/images/Logo.png" height="auto" width="89px">
+		</div>
+		<form [formGroup]="loginForm" padding class="loginForm">
+			<div class="signup_input loginInput">
+				<ion-icon name="person"></ion-icon>
+				<input type="text" name="" placeholder="Username" formControlName="userName" [(ngModel)]="login.userName">
+			</div>
+			<div class="signup_input loginInput">
+				<ion-icon name="lock"></ion-icon>
+				<input type="password" name="" placeholder="Password" formControlName="password" [(ngModel)]="login.password">
+			</div>
+			<button (click)="userLogin(login)" class="loginClick">Login</button><br>
+			<div id="forgotModal">
+				<input type="checkbox" name="" id="remember"><span id="rememberMe">Remember me</span>
+				<span class="fdiv">
+					<label id="forgotPassword" for="forgotPasswordModal">Forgot Password?</label>
+					<input type="checkbox" id="forgotPasswordModal" class="checkBox" />
+					<div class="modal">
+						<div class="modal__inner">
+							<p id="signup"><i>Forgot Password</i></p>
+							<form [formGroup]="forgotPassword">
+								<div class="signupInput">
+									<ion-icon name="mail"></ion-icon>
+									<input type="text" name="" placeholder="Please enter email" formControlName="email" [(ngModel)]="forgot.email">
+								</div>
+								<div class="signupButton">
+									<button (click)="resetPassword(forgot)">Reset Password</button>
+								</div>
+							</form>
+							<label for="forgotPasswordModal"><ion-icon class="forgotModalClose" name="close"></ion-icon></label>
+						</div>
+					</div>
+				</span>
+			</div>
+			<h2 class="otherLoginBreak"><span> or </span></h2>
+			<h3 id="otherLoginTitle">Login with your social media account</h3>
+		</form>
+		<ion-row padding class="socialLogin">
+			<ion-col size="6">
+				<button class="facebookLogin" (click)="doFbLogin()"><img src="assets/images/Facebook.png"> Facebook</button>
+			</ion-col>
+			<ion-col size="6">
+				<button class="googleLogin" (click)="doGoogleLogin()"><img src="assets/images/GooglePlus.png"> Google</button>
+			</ion-col>
+		</ion-row>
+		<h2 class="otherLoginBreak" padding></h2>
+		<div class="pop">
+			<h3 id="signupLine">Don't have an account? <span id="signupLink"><label for="signupModal" class="open">Signup up here!</label></span></h3>
+			
+			<input type="checkbox" id="signupModal" class="checkBox" />
+			<div class="modal signUp">
+				<div class="modal__inner">
+					<p id="signupHead"><i>Sign Up</i></p>
+					<form [formGroup]="signupForm">
+						<div class="signup_input">
+							<ion-icon name="person"></ion-icon>
+							<input type="text" name="" placeholder="Username" formControlName="userName" [(ngModel)]="user.userName">
+						</div>
+						<div class="signup_input">
+							<ion-icon name="mail"></ion-icon>
+							<input type="text" name="" placeholder="Email Address" formControlName="email" [(ngModel)]="user.email">
+						</div>
+						<div class="signup_input">
+							<ion-icon name="call"></ion-icon>
+							<input type="text" name="" placeholder="Phone Number" formControlName="mobile" [(ngModel)]="user.mobile">
+						</div>
+						<div class="signup_input">
+							<ion-icon name="lock"></ion-icon>
+							<input type="password" name="" placeholder="Password" formControlName="password" [(ngModel)]="user.password">
+						</div>
+						<div class="signupButton">
+							<button (click)="signup(user)">Signup</button>
+						</div>
+					</form>
+					<label for="signupModal"><ion-icon name="close" class="signupClose" (click)="signUpClose()"></ion-icon></label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="loader" *ngIf="loading">Loading...</div>
+</ion-content>

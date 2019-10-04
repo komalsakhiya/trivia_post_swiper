@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "376910362134",
+    "firebase_url": "https://triviapost-252809.firebaseio.com",
+    "project_id": "triviapost-252809",
+    "storage_bucket": "triviapost-252809.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376910362134:android:59be57cdc05ac36e3fe737",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376910362134-aevusj2h9i88mu2etc44g3fijue6v5po.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "3a69582e32b3fc617d9cf60da9a99b0835907bff"
+          }
+        },
+        {
+          "client_id": "376910362134-0du8cksem0n6rprodaa1vqd5u27n6qb9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdnoEIw-o5BWsskPoQF6Tp1OSNWf-0lWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376910362134-0du8cksem0n6rprodaa1vqd5u27n6qb9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

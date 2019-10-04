@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-icon name="arrow-round-back" class="backCatRes" routerLink="/allcategory"></ion-icon>
+		<ion-title class="ion-text-center" *ngFor="let news of newsArray; let i=index">
+			<span *ngIf="i==0" id="catTitle">{{news.newsCategory}}</span>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+
+	<div *ngFor="let news of newsArray">
+		<p *ngIf="language == 'English'">{{news.newsTitleEnglish}}</p>
+		<p *ngIf="language == 'Hindi'">{{news.newsTitleEnglish}}</p>
+		<ion-row>
+			<ion-col size="6" >
+				<img src="assets/images/Bookmarks.png" class="icon" *ngIf="!news.bookmarkKey" (click)="bookmark(news.newsId)" />
+				<img src="assets/images/Bookmark.png" class="icon" *ngIf="news.bookmarkKey" (click)="bookmark(news.newsId)" />
+			</ion-col>
+			<ion-col size="6" >
+				<img src="assets/images/Share the App.png" class="icon" *ngIf="language == 'English'" (click)="sharePost(news.newsId, news.newsTitleEnglish)">
+			</ion-col>
+		</ion-row>
+	</div>
+	<div class="loader" *ngIf="loading">Loading...</div>
+</ion-content>

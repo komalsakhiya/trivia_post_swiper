@@ -1,0 +1,19 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-icon name="arrow-round-back" class="singleNewsBack" routerLink="/settings"></ion-icon>
+		<ion-title class="ion-text-center">
+			Trivia Post
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<div *ngFor="let news of newsArray" class="singleMainDiv">
+		<img src="{{mediaPath}}{{news.newsImage}}" height="90px" width="70px">
+		<p [innerHTML]="news.newsEnglish"></p>
+
+		<img src="assets/images/Share the App.png" height="20px" width="20px" (click)="sharePost(news.newsId, news.newsTitleEnglish)">
+		<img src="assets/images/Bookmarks.png" height="20px" width="20px" *ngIf="!news.bookmarkKey" (click)="bookmark(news.newsId)">
+		<img src="assets/images/Bookmark.png" height="20px" *ngIf="news.bookmarkKey" width="20px" (click)="bookmark(news.newsId)">
+	</div>
+	<div class="loader" *ngIf="loading">Loading...</div>
+</ion-content>

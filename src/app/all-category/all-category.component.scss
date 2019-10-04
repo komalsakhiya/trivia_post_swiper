@@ -1,0 +1,69 @@
+input{
+    height: 38px !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background-color: #eff1f5 !important;
+    border-radius: 10px !important;
+    color: black !important;
+    width: 93%!important;
+    padding: 14px!important;
+    margin: 14px!important;
+}
+
+.catList{
+    padding: 10px;
+}
+
+.catCard{
+    background-image: url('assets/images/CategoryBackground.png');
+    margin: 0 auto;
+    height: 83px;
+}
+
+.catCard ion-card-content{
+    margin:auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#blackBell{
+    float: right;
+    margin-bottom: 10px;
+    width: 11px!important;
+    height: 14px;
+}
+
+#redBell{
+    float: right;
+    margin-bottom: 10px;
+    width: 16px!important;
+    height: 17px;
+}
+
+#catTitle{
+    margin-top: 10px;
+    font-size: 19px
+}
+
+#catHeading{
+    font-size: 28px;
+    padding-left: 16px;    
+}
+
+.iconForward{
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.iconSettings{
+    font-size: 20px;
+    margin-top: 3px;
+    padding-left: 15px;
+}
+
+#feedsLink{
+    font-size: 20px;
+    padding-bottom: 5px;
+    margin-right: 5px;
+}

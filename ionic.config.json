@@ -1,0 +1,7 @@
+{
+  "name": "triviaPostApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

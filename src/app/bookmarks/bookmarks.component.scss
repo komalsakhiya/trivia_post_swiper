@@ -1,0 +1,57 @@
+.settings{
+	border-bottom: 1px solid lightgrey;
+	cursor:pointer;
+}
+.bookmark-img{
+	height:68px;
+	width:80px;
+	border-radius:22px;
+}
+.bookmark-img img{
+	max-height:100%;
+	min-height:100%;
+	max-width:100%;
+	min-width:100%;
+	object-fit:cover;
+	border-radius:5px;
+	height:84px;
+	width:100%;
+}
+
+.bookmarkActButton{
+	margin: auto;
+}
+
+.bookmarkActButton img{
+	height:7px;
+	width:20px;
+}
+
+.bookmarkBack{
+	float: left;
+	font-size: 20px;
+	padding-left: 15px;
+}
+
+ion-title{
+	font-size: 13px!important;
+}
+
+#bookmarkHead{
+	font-size: 31px
+}
+
+.bookmarkImgCol{
+	margin: auto 0!important;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.bookmarkCat{
+	margin: 0px auto;
+	color: gray;
+}
+
+.optionsList{
+	margin: 0px auto;
+}

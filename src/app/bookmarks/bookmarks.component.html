@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-icon name="arrow-round-back" class="bookmarkBack" routerLink="/settings"></ion-icon>
+        <ion-title>
+            Bookmarks
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <h2 id="bookmarkHead">My Bookmarks</h2>
+    <ion-row class="searchResults" *ngFor="let news of newsArray" routerLink="/home/bookmark">
+        <ion-col size="3" class="bookmarkImgCol" padding>
+            <div class="bookmark-img">
+            <img src="{{mediaPath}}{{news.newsImage}}">
+        </div>
+        </ion-col>
+        <ion-col size="7">
+            <div padding routerLink="/bookmarks">
+                <p class="bookmarkCat" *ngIf="language == 'English'">{{news.newsCategory}}</p>
+                <p class="bookmarkCat" *ngIf="language == 'Hindi'">{{news.newsCategoryHn}}</p>
+                <span class="optionsList" *ngIf="language == 'Hindi'" [innerHTML]="news.newsTitleHindi"></span>
+                <span class="optionsList" *ngIf="language == 'English'" [innerHTML]="news.newsTitleEnglish"></span>
+            </div>
+        </ion-col>
+        <ion-col class="bookmarkActButton" (click)="bookmarkAction(news.newsId, news.newsTitleEnglish)">
+            <img src="assets/images/menu.png">
+        </ion-col>    
+    </ion-row>
+    <ion-row *ngIf="bookmarkLength == 0">
+        <ion-col size="12">
+            <h1>You have no bookmarks!</h1>
+        </ion-col>
+    </ion-row>
+    <div class="loader" *ngIf="loading">Loading...</div>
+</ion-content>

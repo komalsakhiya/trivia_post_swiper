@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-icon name="arrow-round-back" class="backButFeed" routerLink="/settings"></ion-icon>
+		
+		<ion-title class="ion-text-center">
+			Feedback
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content padding>
+	<div id="feedbackForm">
+		<form [formGroup]="feedbackForm">
+			<div>
+				<input placeholder="Name" formControlName="name" [(ngModel)]="feedback.name"><br><br>
+			</div>
+			<div>
+				<input placeholder="Email" formControlName="email" [(ngModel)]="feedback.email"><br><br>
+			</div>
+			<div>
+				<input placeholder="Mobile Number" formControlName="mobile" [(ngModel)]="feedback.mobile"><br><br>
+			</div>
+			<div>
+				<textarea placeholder="Message" rows="6" formControlName="message" [(ngModel)]="feedback.message"></textarea><br><br>
+			</div>
+			<button (click)="userFeedback(feedback)">Send</button>
+		</form>
+	</div>
+</ion-content>

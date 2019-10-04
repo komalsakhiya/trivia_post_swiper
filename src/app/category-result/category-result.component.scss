@@ -1,0 +1,21 @@
+img.icon{
+height: 20px;
+width: 17px;
+margin: 0 12px
+}
+
+#catTitle{
+margin-left: 5px;
+float: left;
+}
+
+.backCatRes{
+	float: left;
+	font-size: 20px;
+	padding-left: 15px;
+}
+
+ion-content{
+	--color: black;
+	--background: url('../../assets/images/Brown-Background.png') no-repeat center center fixed;
+}

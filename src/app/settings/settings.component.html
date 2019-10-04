@@ -1,0 +1,132 @@
+<ion-header>
+	<ion-toolbar class="settingsToolbar">
+		<ion-icon name="arrow-round-back" routerLink="/allcategory"></ion-icon>
+		<span id="settingTitle"> Options</span>
+		<span id="profile" *ngIf="tokenLocalStorage && firstCharUser" (click)="logout()">{{firstCharUser}}</span>
+		<span id="personIcon" *ngIf="tokenLocalStorage && !firstCharUser" (click)="logout()"><ion-icon name="person"></ion-icon></span>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="settings loginDiv" padding *ngIf="!tokenLocalStorage">
+		<h1 class="savePref"><i>Save your preferences</i></h1>
+		<h4 class="signInBook">Sign In to save your Bookmarks.</h4>
+		<ion-row>
+			<ion-col size="6" class="signInCol">
+				<button id="signInButton" routerLink="/login" >Sign In</button>
+			</ion-col>
+			<ion-col size="6">
+				<button id="googleplus" routerLink="/login" ><img src="assets/images/GooglePlus.png" height="12px;"></button>
+				<button id="facebookLogin" routerLink="/login" ><img src="assets/images/Facebook.png" height="12px;"></button>
+			</ion-col>
+		</ion-row>
+	</div>
+
+	<div>
+		<ion-row>
+			<ion-col size="2" class="langColTwo" padding>
+				<span>Aa</span>
+			</ion-col>
+			<ion-col size="10">
+				<div padding>
+					<ion-col size="5" class="languageDiv">
+						<span class="optionsList">Language</span>
+					</ion-col>
+					<ion-col size="7">
+						<span *ngIf="language == 'Hindi'" class="langColor">
+							<ion-select interface="action-sheet" (ionChange)="languageChange($event)">
+								<ion-select-option value="Hindi" selected="true">Hindi</ion-select-option>
+								<ion-select-option value="English">English</ion-select-option>
+							</ion-select>
+						</span>
+						<span *ngIf="language == 'English'" class="langColor">
+							<ion-select interface="action-sheet" (ionChange)="languageChange($event)">
+								<ion-select-option value="English" selected="true">English</ion-select-option>
+								<ion-select-option value="Hindi">Hindi</ion-select-option>
+							</ion-select>
+						</span>
+						<span *ngIf="!language" class="langColor">
+							<ion-select interface="action-sheet" (ionChange)="languageChange($event)">
+								<ion-select-option value="English" selected="true">English</ion-select-option>
+								<ion-select-option value="Hindi">Hindi</ion-select-option>
+							</ion-select>
+						</span>
+					</ion-col>
+				</div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row class="settings settingIcon">
+			<ion-col size="2" class="settingIconCol" padding>
+				<img src="assets/images/Bookmarks.png">
+			</ion-col>
+			<ion-col size="10">
+				<div padding routerLink="/bookmarks">
+					<span class="optionsList">Bookmarks</span>
+				</div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row class="settings settingIcon">
+			<ion-col size="2" class="settingIconCol" padding>
+				<img src="assets/images/Notification.png">
+			</ion-col>
+			<ion-col size="10">
+				<div padding>
+					<span class="optionsList">Notification</span>
+					<label class="switch" *ngIf="notifyFlag === 'true'">
+						<input type="checkbox" (change)="notificationSwitch($event)" checked="checked"><div></div>
+					</label>
+					<label class="switch" *ngIf="notifyFlag === 'false'">
+						<input type="checkbox" (change)="notificationSwitch($event)"><div></div>
+					</label>
+				</div>
+			</ion-col>
+		</ion-row>
+
+
+		<ion-row class="settings settingIcon">
+			<ion-col size="2" padding>
+				<img src="assets/images/Feedback.png">
+			</ion-col>
+			<ion-col size="10">
+				<div padding routerLink="/feedback">
+					<span class="optionsList">Feedback</span>
+				</div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row class="settings settingIcon">
+			<ion-col size="2" padding>
+				<img src="assets/images/Privacy Policy.png">
+			</ion-col>
+			<ion-col size="10">
+				<div  padding routerLink="/privacy">
+					<span class="optionsList">Privacy</span>
+				</div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row class="settings settingIcon">
+			<ion-col size="2" padding>
+				<img src="assets/images/terms.png">
+			</ion-col>
+			<ion-col size="10">
+				<div padding routerLink="/terms">
+					<span class="optionsList">Terms & condition</span>
+				</div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row class="settings settingIcon"> 
+			<ion-col size="2" class="settingIconCol" padding>
+				<img src="assets/images/Share the App.png" class="optionsList">
+			</ion-col>
+			<ion-col size="10">
+				<div padding (click)="sendShare()">
+					<span class="optionsList">Share this app</span>
+				</div>
+			</ion-col>
+		</ion-row>
+	</div>
+</ion-content>
