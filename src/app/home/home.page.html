@@ -1,23 +1,41 @@
 <ion-header *ngIf="!isVisible">
-	<ion-toolbar>
-		<ion-icon name="arrow-round-back" class="homeBack" routerLink="/allcategory"></ion-icon>
+	<ion-toolbar *ngIf="!bookMark && !catTitle && !searchKey">
+		<ion-icon name="arrow-round-back" class="homeBack" routerLink="/allcategory" (click)="removeJs()"></ion-icon>
 		<ion-title class="ion-text-center">
 			Trivia Post
 		</ion-title>
 	</ion-toolbar>
+	<ion-toolbar *ngIf="bookMark">
+		<ion-icon name="arrow-round-back" class="homeBack" routerLink="/bookmarks" (click)="removeJs()"></ion-icon>
+		<ion-title>
+			Bookmarked News
+		</ion-title>
+	</ion-toolbar>
+	<ion-toolbar *ngIf="catTitle">
+		<ion-icon name="arrow-round-back" class="homeBack" routerLink="/allcategory" (click)="removeJs()"></ion-icon>
+		<ion-title>
+			{{catTitle}}
+		</ion-title>
+	</ion-toolbar>
+	<ion-toolbar *ngIf="searchKey">
+		<ion-icon name="arrow-round-back" class="homeBack" routerLink="/searchBar" (click)="removeJs()"></ion-icon>
+		<ion-title>
+			Results for {{searchKey}}
+		</ion-title>
+	</ion-toolbar>
 </ion-header>
-<ion-content>
+
+<ion-content *ngIf="!loading && !isTextVisible">
 	<div class="swiper-container swiper-container-v ">
 		<div class="swiper-wrapper ">
 			<div class="swiper-slide background" *ngFor="let news of newsArray; let i = index" id={{news.newsId}}
 				style="padding:15px">
-
 				<div class="swiper-container swiper-container-h " id="swiper-h-{{news.newsId}}">
 					<div class="swiper-wrapper" id="swiper-wrapper{{i}}">
 						<div class="page_slider swiper-slide newsId-{{news.newsId}} "
 							style="background-color: transparent" id="page_slider{{i}}">
 							<div class='content' style="position: relative">
-								<div id="sliderContent{{i}}" style="max-height: 70%">
+								<div id="sliderContent{{i}}">
 									<!-- Title & Logo -->
 									<ion-row>
 										<ion-col size="8" style="margin: auto">
@@ -40,7 +58,8 @@
 									<div>
 										<div *ngIf="language == 'English'" [innerHTML]="news.newsEnglish">
 										</div>
-										<div class= "hindi-news" *ngIf="language == 'Hindi'" [innerHTML]="news.newsHindi">
+										<div class="hindi-news" *ngIf="language == 'Hindi'"
+											[innerHTML]="news.newsHindi">
 										</div>
 									</div>
 								</div>
@@ -48,13 +67,19 @@
 						</div>
 					</div>
 					<!-- Bookmark -->
-					<div style="position: absolute; bottom: 0px;z-index: 1;">
-							<img src="assets/images/Bookmarks.png" class="bookmark" *ngIf="!news.bookmarkKey" (click)="bookmark(i)" />
-							<img src="assets/images/Bookmark.png" class="bookmark" *ngIf="news.bookmarkKey" (click)="bookmark(i)" />
-						<!-- <img src="../../assets/images/Bookmark.png" class="bookmark" /> -->
+					<div style="position: absolute; bottom: 0px;z-index: 28;">
+						<img src="assets/images/Bookmarks.png" class="bookmark" *ngIf="!news.bookmarkKey"
+							(click)="bookmark(i)" />
+						<img src="assets/images/Bookmark.png" class="bookmark" *ngIf="news.bookmarkKey"
+							(click)="bookmark(i)" />
 					</div>
 					<!-- Share button -->
-					<div class="share-button" *ngIf="language == 'English'" (click)="sharePost(news.newsId, news.newsTitleEnglish)" >
+					<div class="share-button" *ngIf="language == 'English'"
+						(click)="sharePost(news.newsId, news.newsTitleEnglish)">
+						<img src="../../assets/images/Share.png" class="icon" />
+					</div>
+					<div class="share-button" *ngIf="language == 'Hindi'"
+						(click)="sharePost(news.newsId, news.newsTitleHindi)">
 						<img src="../../assets/images/Share.png" class="icon" />
 					</div>
 					<div class="swiper-pagination swiper-pagination-h"></div>
@@ -63,18 +88,12 @@
 		</div>
 		<!-- <div class="swiper-pagination swiper-pagination-v"></div> -->
 	</div>
-	<!-- <div *ngFor="let news of newsArray">
-		<p *ngIf="language == 'English'">{{news.newsTitleEnglish}}</p>
-		<p *ngIf="language == 'Hindi'">{{news.newsTitleHindi}}</p>
-		<ion-row>
-			<ion-col size="6" >
-				<img src="assets/images/Bookmarks.png" class="icon" *ngIf="!news.bookmarkKey" (click)="bookmark(news.newsId)" />
-				<img src="assets/images/Bookmark.png" class="icon" *ngIf="news.bookmarkKey" (click)="bookmark(news.newsId)" />
-			</ion-col>
-			<ion-col size="6" >
-				<img src="assets/images/Share the App.png" class="icon" *ngIf="language == 'English'" (click)="sharePost(news.newsId, news.newsTitleEnglish)">
-			</ion-col>
-		</ion-row>
-	</div> -->
-	<div class="loader" *ngIf="loading">Loading...</div>
+</ion-content>
+<ion-content *ngIf="loading">
+	<div class="loader">Loading...</div>
+</ion-content>
+<ion-content *ngIf="isTextVisible">
+	<div class="no-news-text">
+		<span>{{text}}</span>
+	</div>
 </ion-content>

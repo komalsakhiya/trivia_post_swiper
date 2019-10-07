@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import {FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import {Platform } from '@ionic/angular';
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
@@ -14,8 +15,13 @@ import { ToastController } from '@ionic/angular';
 export class LoginComponent implements OnInit {
 	toast: any;
 	loading: any;
-	constructor(public toastController: ToastController,private googlePlus: GooglePlus, public _userService: UserService, private router: Router, private fb: Facebook) {}
+	constructor(public platform:Platform, public toastController: ToastController,private googlePlus: GooglePlus, public _userService: UserService, private router: Router, private fb: Facebook) {}
 	ngOnInit() {
+		this.platform.backButton.subscribe(async () => {
+            if(this.router.url.includes('login')){
+                this.router.navigate(['settings']);
+            }
+        });
 		this.rememberMe();
 	}
 

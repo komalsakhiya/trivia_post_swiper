@@ -27,9 +27,11 @@ export class SettingsComponent implements OnInit {
 
 	ngOnInit() {
 		this.getUrl();
-		this.platform.backButton.subscribeWithPriority(1, () => {
-			this.router.navigate(['allcategory']);
-		});
+		this.platform.backButton.subscribe(async () => {
+            if(this.router.url.includes('settings')){
+                this.router.navigate(['allcategory']);
+            }
+        });
 
 		this.tokenLocalStorage = localStorage.getItem('accessToken');
 		this.notifyFlag = localStorage.getItem('notification');

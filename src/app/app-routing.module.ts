@@ -10,7 +10,6 @@ import {PrivacyComponent} from './privacy/privacy.component';
 import {SearchbarComponent} from './searchbar/searchbar.component';
 import {TermsAndCondComponent} from './terms-and-cond/terms-and-cond.component'; 
 import {BookmarksComponent} from './bookmarks/bookmarks.component'; 
-import {SingleNewsComponent} from './single-news/single-news.component'; 
 import { AuthGuard, LoginGuard } from './guards/user.guard';
 const routes: Routes = [
 { 
@@ -23,7 +22,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
 },
 {
-    path: 'home/category/:id',
+    path: 'home/category/:id/:catTitle',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
 },
 { 
@@ -31,12 +30,17 @@ const routes: Routes = [
 	loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
 },
 { 
-	path: 'settings',
-	component: SettingsComponent
+	path: 'home/single-news/:id', 
+	loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+},
+
+{ 
+	path: 'home/search-news/:key', 
+	loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
 },
 { 
-	path: 'post/:id',
-	component: SingleNewsComponent
+	path: 'settings',
+	component: SettingsComponent
 },
 { 
 	path: 'login',

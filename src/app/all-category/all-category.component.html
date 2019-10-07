@@ -23,13 +23,15 @@
                         <img src="assets/images/Category-notification.png" *ngIf="!category.isNotify" id="blackBell" (click)="addNotify(category.categoryId)">
                         <img src="assets/images/Category-notification-2.png" *ngIf="category.isNotify" id="redBell" (click)="addNotify(category.categoryId)">
                     </ion-col>    
-                    <ion-col size="10" routerLink="/home/category/{{category.categoryId}}">
-                        <h2 id="catTitle" *ngIf="language == 'English'" ><strong>{{category.categoryTitle}}</strong></h2>
-                        <h2 id="catTitle" *ngIf="language == 'Hindi'"><strong>{{category.categoryTitleHn}}</strong></h2>    
+                    <ion-col size="10"  *ngIf="language == 'English'" routerLink="/home/category/{{category.categoryId}}/{{category.categoryTitle}}">
+                        <h2 id="catTitle" ><strong>{{category.categoryTitle}}</strong></h2>
+					</ion-col>
+					<ion-col size="10" *ngIf="language == 'Hindi'" routerLink="/home/category/{{category.categoryId}}/{{category.categoryTitleHn}}">
+                        <h2 id="catTitle" ><strong>{{category.categoryTitleHn}}</strong></h2>    
                     </ion-col>
                 </ion-card-content>
             </ion-card>
         </ion-col>
 	</ion-row>
-	<!-- <div class="loader" *ngIf="loading">Loading...</div> -->
+	<div class="loader" *ngIf="loading">Loading...</div>
 </ion-content>

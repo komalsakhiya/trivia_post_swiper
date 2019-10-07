@@ -5,6 +5,7 @@ import {config} from '../config';
 import {Router, NavigationExtras} from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import * as _ from 'lodash';
+import {Platform } from '@ionic/angular';
 @Component({
 	selector: 'app-all-category',
 	templateUrl: './all-category.component.html',
@@ -19,7 +20,7 @@ export class AllCategoryComponent implements OnInit {
 	loggedInUser: any;
 	loading:any;
 	language: string;
-	constructor(public toastController: ToastController,public _categoryService: CategoryService, private router:Router){
+	constructor(public platform:Platform, public toastController: ToastController,public _categoryService: CategoryService, private router:Router){
 		this.getCategories();
 	}
 
@@ -28,6 +29,11 @@ export class AllCategoryComponent implements OnInit {
 	}
 
 	ionViewWillEnter(){
+		this.platform.backButton.subscribe(async () => {
+            if(this.router.url.includes('allcategory')){
+                this.router.navigate(['home']);
+            }
+        });
 		this.language = localStorage.getItem('language');
 		console.log("language in all category",this.language)
 		this.getCategories();

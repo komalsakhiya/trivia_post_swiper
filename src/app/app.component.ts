@@ -8,8 +8,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
-import {Observable} from 'rxjs/Observable';
-import { ToastController,} from '@ionic/angular';
+import { Observable } from 'rxjs/Observable';
+import { ToastController, } from '@ionic/angular';
 
 import 'rxjs/add/observable/fromEvent';
 
@@ -19,8 +19,8 @@ import 'rxjs/add/observable/fromEvent';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  hide:boolean = true;
-  toast:any;
+  hide: boolean = true;
+  toast: any;
   constructor(
     public toastController: ToastController,
     private platform: Platform,
@@ -29,18 +29,42 @@ export class AppComponent {
     private fcm: FCM,
     private router: Router,
     protected deeplinks: Deeplinks,
-    ){
-    if(!localStorage.getItem('language')){
+  ) {
+    // Check Internet conectivity
+    var offline = Observable.fromEvent(document, "offline");
+    var online = Observable.fromEvent(document, "online");
+
+    offline.subscribe(() => {
+      this.hide = false;
+      this.toast = this.toastController.create({
+        message: 'Please check your internet connection',
+        animated: true,
+        showCloseButton: true,
+        closeButtonText: "OK",
+        cssClass: "my-toast",
+        position: "bottom",
+        color: "danger"
+      }).then((obj) => {
+        obj.present();
+      });
+    });
+
+    online.subscribe(() => {
+      this.toastController.dismiss();
+      this.hide = true;
+    });
+
+    if (!localStorage.getItem('language')) {
       localStorage.setItem('language', "English");
     }
 
-    if(!localStorage.getItem('notification')){
-      localStorage.setItem('notification', "false");      
+    if (!localStorage.getItem('notification')) {
+      localStorage.setItem('notification', "false");
     }
     this.initializeApp();
   }
 
-  initializeApp(){
+  initializeApp() {
     const handleBranch = () => {
       this.platform.ready().then(() => {
         this.statusBar.backgroundColorByHexString('#000000');

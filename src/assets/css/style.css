@@ -48,3 +48,12 @@ body {
 .display-none{
   display: none !important;
 }
+@media (min-width:360px) and (max-width: 360px){
+  .news-title {
+    margin: auto;
+    font-size: 1.6rem !important;
+    color: black;
+    text-align: center;
+}
+
+}

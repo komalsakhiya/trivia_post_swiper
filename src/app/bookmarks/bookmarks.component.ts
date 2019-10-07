@@ -26,10 +26,11 @@ export class BookmarksComponent implements OnInit {
 	constructor(private platform: Platform, private socialSharing: SocialSharing,public toastController: ToastController,public actionSheetController: ActionSheetController,public _newsService: NewsService,public _categoryService: CategoryService, private router:Router) { }
 
 	ngOnInit() {
-		this.platform.backButton.subscribeWithPriority(1, () => {
-			this.router.navigate(['settings']);
-		});
-
+		this.platform.backButton.subscribe(async () => {
+            if(this.router.url.includes('bookmarks')){
+                this.router.navigate(['settings']);
+            }
+        });
 		this.bookmarkedNews();
 		this.language = localStorage.getItem('language');
 	}
@@ -81,7 +82,7 @@ export class BookmarksComponent implements OnInit {
 			}, {
 				text: 'Share',
 				handler: () => {
-					var message = "Check out this amazing news -->  "  + title;
+					var message = "Check out this amazing news " + '" ' + title + ' "';
 					var subject = "Trivia Post";
 					var url = 'https://triviapost.com/post/' + id; 
 					this.socialSharing.share(message,subject, null , url)

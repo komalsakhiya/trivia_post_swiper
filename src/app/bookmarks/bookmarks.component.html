@@ -8,14 +8,14 @@
 </ion-header>
 <ion-content padding>
     <h2 id="bookmarkHead">My Bookmarks</h2>
-    <ion-row class="searchResults" *ngFor="let news of newsArray" routerLink="/home/bookmark">
-        <ion-col size="3" class="bookmarkImgCol" padding>
+    <ion-row class="searchResults" *ngFor="let news of newsArray">
+        <ion-col size="3" class="bookmarkImgCol" padding routerLink="/home/bookmark">
             <div class="bookmark-img">
-            <img src="{{mediaPath}}{{news.newsImage}}">
-        </div>
+                <img src="{{mediaPath}}{{news.newsImage}}">
+            </div>
         </ion-col>
-        <ion-col size="7">
-            <div padding routerLink="/bookmarks">
+        <ion-col size="7" routerLink="/home/bookmark">
+            <div padding>
                 <p class="bookmarkCat" *ngIf="language == 'English'">{{news.newsCategory}}</p>
                 <p class="bookmarkCat" *ngIf="language == 'Hindi'">{{news.newsCategoryHn}}</p>
                 <span class="optionsList" *ngIf="language == 'Hindi'" [innerHTML]="news.newsTitleHindi"></span>
@@ -24,7 +24,7 @@
         </ion-col>
         <ion-col class="bookmarkActButton" (click)="bookmarkAction(news.newsId, news.newsTitleEnglish)">
             <img src="assets/images/menu.png">
-        </ion-col>    
+        </ion-col>
     </ion-row>
     <ion-row *ngIf="bookmarkLength == 0">
         <ion-col size="12">

@@ -64,10 +64,12 @@ export class NewsService {
 
 	//get single news
 	getSingleNews(id): Observable<News[]> {
-		return this.http.get(config.baseApiUrl + 'single-news?postId='+ id).pipe(
+		console.log('service',id);
+		http://192.168.1.83:5000/api/single-news?postId=5d92fae2ec36d35216e159a6
+		return this.http.get(config.baseApiUrl + 'single-news?postId=' + id).pipe(
 			map((res) => {
 				this.singleNews = res['data'];
-				console.log(this.singleNews);
+				console.log("ser",this.singleNews);
 				return this.singleNews;
 			}),
 			catchError(this.handleError));

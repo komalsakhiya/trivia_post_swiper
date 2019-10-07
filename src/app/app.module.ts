@@ -27,11 +27,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import {SingleNewsComponent} from './single-news/single-news.component'; 
 
 
 @NgModule({
-  declarations: [SingleNewsComponent,AppComponent, SettingsComponent, LoginComponent, AllCategoryComponent, 
+  declarations: [AppComponent, SettingsComponent, LoginComponent, AllCategoryComponent, 
   CategoryResultComponent,FeedbackComponent, PrivacyComponent,
   SearchbarComponent,TermsAndCondComponent, BookmarksComponent],
   entryComponents: [],

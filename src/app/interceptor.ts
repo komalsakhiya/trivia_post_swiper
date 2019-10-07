@@ -16,7 +16,7 @@ export class MyInterceptor implements HttpInterceptor {
     accessToken;
     constructor(public route: Router) {
         this.accessToken = localStorage.getItem('accessToken');
-        console.log(this.accessToken);
+        // console.log(this.accessToken);
     }
     //function which will be called for all http calls
     intercept(
@@ -24,8 +24,8 @@ export class MyInterceptor implements HttpInterceptor {
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
         this.accessToken = localStorage.getItem('accessToken');
-        console.log(this.accessToken);
-        console.log("token=================>", this.accessToken);
+        // console.log(this.accessToken);
+        // console.log("token=================>", this.accessToken);
         //how to update the request Parameters
         if (this.accessToken) {
             const cloned = request.clone({

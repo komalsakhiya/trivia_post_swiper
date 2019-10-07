@@ -5,21 +5,23 @@
 				<ion-icon name="arrow-round-back" routerLink="/allcategory"></ion-icon>
 			</ion-col>
 			<ion-col size="10">
-				<ion-input [(ngModel)]="search" set-focuser  type="text" placeholder="Search here.." (keyup.enter)="searchNews()"></ion-input>
+				<ion-input set-focuser type="text" placeholder="Search here.."
+					(input)="searchNews($event.target.value)"></ion-input>
 			</ion-col>
 		</ion-row>
 	</ion-toolbar>
 </ion-header>
 <ion-content padding>
 	<ion-row class="searchResults" *ngFor="let searchNews of newsArray">
-		<ion-col size="3" class="newsImg" padding (click)="getSingleSearch(searchNews.newsId)">
+		<ion-col size="3" class="newsImg" padding (click)="getSingleSearch()">
 			<img src="{{mediaPath}}{{searchNews.newsImage}}" height="73px" width="100%">
 		</ion-col>
-		<ion-col size="9" (click)="getSingleSearch(searchNews.newsId)">
+		<ion-col size="9" (click)="getSingleSearch()">
 			<div padding>
 				<p class="newsCat" *ngIf="language == 'English'">{{searchNews.newsCategory}}</p>
 				<p class="newsCat" *ngIf="language == 'Hindi'">{{searchNews.newsCategoryHn}}</p>
-				<span class="optionsList" *ngIf="language == 'English'" [innerHTML]="searchNews.newsTitleEnglish"></span>
+				<span class="optionsList" *ngIf="language == 'English'"
+					[innerHTML]="searchNews.newsTitleEnglish"></span>
 				<span class="optionsList" *ngIf="language == 'Hindi'" [innerHTML]="searchNews.newsTitleHindi"></span>
 			</div>
 		</ion-col>

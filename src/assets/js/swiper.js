@@ -1678,7 +1678,7 @@ var currentPostId;
       activeSlide = swiper.$wrapperEl.find(("." + (params.slideClass) + "[data-swiper-slide-index=\"" + activeIndex + "\"]"));
     } else {
       activeSlide = slides.eq(activeIndex);
-      // console.log(activeIndex,params.direction)
+      // console.log("active slide index=========>",activeIndex,params.direction)
 
       // console.log(activeIndex, params.direction, activeSlide);
 
@@ -1703,7 +1703,7 @@ var currentPostId;
 
       }
       else {
-        console.log("Horizontal Slide Change")
+        // console.log("Horizontal Slide Change")
       }
     }
 

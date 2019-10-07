@@ -24,7 +24,7 @@ ion-card{
   }
   .post_img {
     width: 100%;
-    height: 240px !important;
+    height: 200px !important;
     padding:0 20px;
     overflow: hidden;
     margin: auto;
@@ -55,6 +55,7 @@ ion-card{
    height: 30px;
    width: 20px;
    margin-left: 10px;
+   z-index: 1111111;
  }
 .background{
   background-image: url("../../assets/images/Brown-Background.png")!important;
@@ -67,4 +68,15 @@ ion-card{
   font-size: 35px;
   color:black;
   text-align: center
+}
+.no-news-text{
+  height: 100%;
+	width: 100%;
+	background: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.no-news-text span{
+  font-size:35px;
 }

@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import {Platform } from '@ionic/angular';
 
 @Component({
 	selector: 'app-feedback',
@@ -13,9 +14,15 @@ import { ToastController } from '@ionic/angular';
 export class FeedbackComponent implements OnInit {
 	toast: any;
 	loading:any;
-	constructor(public toastController: ToastController, public _userService: UserService, private router: Router) { }
+	constructor(public platform:Platform, public toastController: ToastController, public _userService: UserService, private router: Router) { }
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.platform.backButton.subscribe(async () => {
+            if(this.router.url.includes('feedback')){
+                this.router.navigate(['settings']);
+            }
+        });
+	}
 
 	feedbackForm = new FormGroup({
 		email: new FormControl('', Validators.required),

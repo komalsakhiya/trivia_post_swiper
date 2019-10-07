@@ -18,9 +18,11 @@ export class TermsAndCondComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.platform.backButton.subscribeWithPriority(1, () => {
-			this.router.navigate(['settings']);
-		});
+		this.platform.backButton.subscribe(async () => {
+            if(this.router.url.includes('terms')){
+                this.router.navigate(['settings']);
+            }
+        });
 		this.getPrivacyPolicy();
 	}
 
