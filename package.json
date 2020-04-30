@@ -62,7 +62,7 @@
     "es6-promise-plugin": "^4.2.2",
     "ionic-angular": "^3.9.8",
     "ionic-plugin-deeplinks": "^1.0.20",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.5.3",
     "swiper": "^5.0.3",
